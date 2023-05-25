@@ -71,9 +71,9 @@ class User
       // $qm->bindParam(4, $password);
 		// ================ PostgreSQL ================
 		  $qm = $db_main->prepare("INSERT INTO users (username, fullname, email, password) VALUES ('$username', '$fullname', '$email', '$password')");
-		  $q = $db->prepare("INSERT INTO users (username, fullname, email, password) VALUES ('$username', '$fullname', '$email', '$password')");
+		  $qm->execute();
+      $q = $db->prepare("INSERT INTO users (username, fullname, email, password) VALUES ('$username', '$fullname', '$email', '$password')");
       $q->execute();
-  		$qm->execute();
   	}catch(Exception $e){
   		$error_message[] = "Error : ".$e->getMessage();
   	}
