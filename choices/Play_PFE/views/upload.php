@@ -4,7 +4,7 @@
 		<table>
 			<tr>
 				<th>Titre *</th>
-				<td><input type="text" name="title"  maxlength="70"></td>
+				<td><input type="text" name="title"  maxlength="100"></td>
 			</tr>
 			<tr>
 				<th>Video *</th>
@@ -16,7 +16,7 @@
 			</tr>
 			<tr>
 				<th>Description *</th>
-				<td><textarea rows="4" cols="50" name="description" maxlength="250"></textarea></td>
+				<td><textarea rows="4" cols="50" name="description" maxlength="32500"></textarea></td>
 			</tr>
 			<tr>
 				<th></th>

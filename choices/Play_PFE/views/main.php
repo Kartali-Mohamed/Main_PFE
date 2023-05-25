@@ -26,11 +26,11 @@ require('inc/header.php');
 </div>
 
 <div class="content">
-	<?php for($i=1; $i<=$pages; $i++):?>
-			<a href="index.php?p='.$i.'"<?=$i?></a>
-			<?php if($i<$pages):?>
-				<span class="separate"> | </span>
-			<?php endif ?>
+	<?php for ($i = 1; $i <= $pages; $i++) : ?>
+		<a href="index.php?p=<?php echo $i; ?>"><?php echo $i; ?></a>
+		<?php if ($i < $pages) : ?>
+			<span class="separate"> | </span>
+		<?php endif; ?>
 	<?php endfor; ?>
 </div>
 

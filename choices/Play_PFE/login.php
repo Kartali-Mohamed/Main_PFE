@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 	//Check if empty
 	if(empty($username)|| empty($password)){
-		set_error_msg("Veuillez remplir les champs obligatoires : Nom d'utilisateur et Mot de passe.");
+		// set_error_msg("Veuillez remplir les champs obligatoires : Nom d'utilisateur et Mot de passe.");
 		redirect_to('login');
 	}
 
@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		redirect_to('index');
 	}else{
 		//Set error msg if its invalidate
-		set_error_msg("Nom d'utilisateur / Mot de passe invalide, Réessayez.");
+		// set_error_msg("Nom d'utilisateur / Mot de passe invalide, Réessayez.");
 		redirect_to('login');
 	}
 }

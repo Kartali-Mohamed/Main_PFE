@@ -33,13 +33,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 	//Check if empty
 	if(empty($fullname)|| empty($username)|| empty($email)|| empty($password)|| empty($password_again)){
-		set_error_msg("Veuillez remplir les champs obligatoires : Nom complet, Nom d'utilisateur, Email et Mot de passe.");
+		// set_error_msg("Veuillez remplir les champs obligatoires : Nom complet, Nom d'utilisateur, Email et Mot de passe.");
 		redirect_to('register');
 	}elseif($password!=$password_again){
-		set_error_msg("Mot de passe ne correspond pas.");
+		// set_error_msg("Mot de passe ne correspond pas.");
 		redirect_to('register');
 	}else if(strlen($password)<=4){
-		set_error_msg("Mot de passe est trop court.");
+		// set_error_msg("Mot de passe est trop court.");
 		redirect_to('register');
 	}
 
@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	//check if the username already exist
 	$user = $user->getUserData($username , "register");
 	if(!empty($user->username)){
-			set_error_msg("Ce Nom d'utilisateur est déjà pris. Essaie un autre.");
+			// set_error_msg("Ce Nom d'utilisateur est déjà pris. Essaie un autre.");
 			redirect_to('register');
 	}
 

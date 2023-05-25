@@ -18,7 +18,6 @@ require('inc/header.php');
 					</a>
 					<a href="profile.php?username=<?=$i['username']?>"><?=ucfirst($i['fullname'])?></a>
 					<b><?=$i['date']?></b>
-					<p><?=$i['description']?></p>
 				</div>
 			<?php endforeach;?>
 

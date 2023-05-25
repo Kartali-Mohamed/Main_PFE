@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			redirect_to('upload');
 	}
 	if(strlen($title) > 100){
-		set_error_msg("HEY, Titre de la vidéo doit comporter moins de 70 caractères.");
+		set_error_msg("HEY, Titre de la vidéo doit comporter moins de 100 caractères.");
 		redirect_to('upload');
 	}
 
@@ -69,8 +69,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 		if($upload_video && $upload_thumbn) {
 			$video = new Video();
-			$video->setInfo($title, $description, get_session('id'), $vid_uploads_dir, $thumbn_uploads_dir, date("M d, Y",time()))
-						->add();
+			$video->setInfo($title, $description, get_session('id'), $vid_uploads_dir, $thumbn_uploads_dir, date("M d, Y",time()));
+			$video->add();
 			$video_id = $video->getVideoId();
 		}
 
