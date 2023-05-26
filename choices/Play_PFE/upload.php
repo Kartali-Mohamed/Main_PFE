@@ -79,17 +79,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	}
 
 	if(is_file($vid_uploads_dir) && is_file($thumbn_uploads_dir) ){
-		//if the uploaded do exist then
-        // Get and save embedding of title and description  
-		$url = 'http://127.0.0.1:8000/embedding/text?id='.$video_id['id'].'&title='.urlencode($title).'&desc='.urlencode($description);
-		$r = curl_init($url);
-		curl_setopt($r, CURLOPT_POST, true);
-		curl_setopt($r, CURLOPT_RETURNTRANSFER, true);
-		$response = curl_exec($r);
-		curl_close($r);
-		//Redirect to this page
-		header('refresh:1;url=upload.php?status=uploaded');
-		//header('Location: upload.php?status=uploaded');
+		// Check if video upload in database success
+		if(isset($video_id)){
+			//if the uploaded do exist then
+            // Get and save embedding of title and description 
+			$url = 'http://127.0.0.1:8000/embedding/text?id='.$video_id['id'].'&title='.urlencode($title).'&desc='.urlencode($description);
+			$r = curl_init($url);
+			curl_setopt($r, CURLOPT_POST, true);
+			curl_setopt($r, CURLOPT_RETURNTRANSFER, true);
+			$response = curl_exec($r);
+			curl_close($r);
+			//Redirect to this page
+			header('refresh:1;url=upload.php?status=uploaded');
+			//header('Location: upload.php?status=uploaded');
+		} else {
+			//Delete Video & Thumbnail src
+			$video = new Video();
+			$video->deleteThumbnail_video($vid_uploads_dir, $thumbn_uploads_dir);
+			unset_session("error");
+			set_error_msg("Échec -_- Essayer à nouveau");
+			redirect_to('upload');
+		}
+		
 	}else{
 		set_error_msg("Erreur s'est produite, Veuillez réessayer !!");
 		redirect_to('upload');
