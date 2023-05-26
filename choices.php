@@ -105,7 +105,7 @@
         }
         .caption{
             
-            font-size: 0.7em;
+            font-size: 0.5em;
             text-align: center;
             position: absolute;
             top: 2%;
