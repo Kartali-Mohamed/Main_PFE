@@ -28,7 +28,7 @@ function getVote(int) {
 			<?php if(@$_SESSION['id']==$uploader['vid']):?>
 				<form method="POST" class="btn-dlt">
 					<input type="text" name="id" value="<?=$id?>" style="display:none;">
-					<input type="submit" value="Delete This Video" name="Vdel">
+					<input type="submit" value="Supprimer cette vidéo" name="Vdel">
 				</form>
 			<?php endif;?>
 	</h3>
@@ -72,7 +72,7 @@ function getVote(int) {
 						<?php if(@$_SESSION['id']==$i['id_owner']):?>
 							<form method="POST" class="btn-dlt">
 								<input type="text" name="id" value="<?=$i['id']?>" style="display:none;">
-								<input type="submit" class="btn-dlt" value="Delete This Comment" name="Cdel">
+								<input type="submit" class="btn-dlt" value="Supprimer ce commentaire" name="Cdel">
 							</form>
 						<?php endif; ?>
 						<p><?=$i['content']?></p>
