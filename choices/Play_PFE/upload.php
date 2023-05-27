@@ -43,6 +43,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		set_error_msg("HEY, Titre de la vidéo doit comporter moins de 100 caractères.");
 		redirect_to('upload');
 	}
+	if(strlen($description) > 32500){
+		set_error_msg("HEY, Description de la vidéo doit comporter moins de 32500 caractères.");
+		redirect_to('upload');
+	}
 
 	//name of the video & thumbnail
 	$name = get_session('id').'-'.date_timestamp_get(date_create());
