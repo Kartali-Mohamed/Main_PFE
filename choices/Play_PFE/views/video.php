@@ -25,7 +25,7 @@ function getVote(int) {
 	</video>
 	<h3>
 		<?=$title?>
-			<?php if(@$_SESSION['id']==$uploader['vid']):?>
+			<?php if(@$_SESSION['id']==$uploader['vid'] || get_session('username') == "admin"):?>
 				<form method="POST" class="btn-dlt">
 					<input type="text" name="id" value="<?=$id?>" style="display:none;">
 					<input type="submit" value="Supprimer cette vidéo" name="Vdel">
@@ -69,7 +69,7 @@ function getVote(int) {
 			<?php foreach($comments as $k => $i): ?>
 					<div class="comment">
 						<b><a href="profile.php?username=<?=$i['fullname']?>"><?=$i['fullname']?></a></b> @ <?=$i['username']?><span class="separate"> | </span><i><?=$i['date']?></i>
-						<?php if(@$_SESSION['id']==$i['id_owner']):?>
+						<?php if(@$_SESSION['id']==$i['id_owner'] || get_session('username') == "admin"):?>
 							<form method="POST" class="btn-dlt">
 								<input type="text" name="id" value="<?=$i['id']?>" style="display:none;">
 								<input type="submit" class="btn-dlt" value="Supprimer ce commentaire" name="Cdel">

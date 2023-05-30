@@ -30,6 +30,8 @@
 							<a href="../../register.php">S'inscrire</a>
 							<span class="separate">|</span>
 							<a href="../../login.php">Connexion</a>
+                    <?php elseif(get_session('username') == "admin"): ?>
+						    <a href="../../logout.php">Logout</a>
 					<?php else: ?>
 							<a href="upload.php?id=<?=get_session('id')?>"><img src="./assets/upload.png"></a>
 							<span class="separate">|</span>
