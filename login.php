@@ -26,6 +26,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	if(!empty($user->username)){
 		//Set cookies if its validate
 		set_login_session($user->id, $user->username, $user->fullname);
+		//Unset error msg if its set 
+		unset_session("error");
 		//redirect to the main page
 		redirect_to('choices');
 	}else{
