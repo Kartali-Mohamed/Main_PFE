@@ -139,7 +139,7 @@
 </head>
 <body>
     <div class="nav">
-        <div class="logo">our logo</div>
+        <div class="logo">Mahroussa tech</div>
         <div class="caption">
             <h1>Qu'aimeriez-vous explorer aujourd'hui ?</h1>
         </div>

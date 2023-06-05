@@ -31,32 +31,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$password_again = md5($password_again);
 
 	//Check if empty
-	if(empty($fullname)|| empty($username)|| empty($email)|| empty($password)|| empty($password_again)){
+	if(empty($fullname) || empty($username) || empty($email) || empty($password) || empty($password_again)){
 		set_error_msg("Veuillez remplir les champs obligatoires : Nom complet, Nom d'utilisateur, Email et Mot de passe.");
-		redirect_to('register');
+		redirect_to('login');
 	}elseif($password!=$password_again){
 		set_error_msg("Mot de passe ne correspond pas.");
-		redirect_to('register');
+		redirect_to('login');
 	}else if(strlen($password)<=4){
 		set_error_msg("Mot de passe est trop court.");
-		redirect_to('register');
+		redirect_to('login');
+	} else {
+		$user = new User();
+		//check if the username already exist
+		$user = $user->getUserData($username , "register");
+		if(!empty($user->username)){
+				set_error_msg("Ce Nom d'utilisateur est déjà pris. Essaie un autre.");
+				redirect_to('login');
+		}
+
+
+		//send the user data to the database
+		$user->register($username, $email, $password, $fullname);
+		
+		// Redirect to thanks page
+		header('Location: login.php');
 	}
-
-	$user = new User();
-	//check if the username already exist
-	$user = $user->getUserData($username , "register");
-	if(!empty($user->username)){
-			set_error_msg("Ce Nom d'utilisateur est déjà pris. Essaie un autre.");
-			redirect_to('register');
-	}
-
-
-	//send the user data to the database
-	$user->register($username, $email, $password, $fullname);
-	
-	// Redirect to thanks page
-	header('Location: register.php?status=thanks');
 
 }
-load_view('register');
+load_view('login');
 ?>
