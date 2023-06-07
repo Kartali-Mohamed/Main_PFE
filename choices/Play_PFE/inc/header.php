@@ -19,10 +19,14 @@
 				</li>
 
 				<li style="text-align:center">
-					<form action="search.php" method="GET">
-						<input type="text" name="s"></input>
-						<input type="submit" value="search"></input>
-					</form>
+				    <?php if(get_session('username') == "admin"): ?>
+						<b>Admin Panel</b>
+					<?php else: ?>
+						<form action="search.php" method="GET">
+							<input type="text" name="s"></input>
+							<input type="submit" value="search"></input>
+					    </form>
+					<?php endif; ?>
 				</li>
 				
 				<li style="text-align:right">

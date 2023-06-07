@@ -226,11 +226,6 @@ a{
                 <button> <span><input class="button" type="submit" value="Enregistrer"></span><span class="fa fa-user-plus"></span></button>
             </div>
         </form>
-		<?php
-			if(get_session('error')){
-				echo '<div class="error">'.get_error_msg().'</div>';
-			}
-		?>
     </div>
     <script>document.querySelectorAll('.tab').forEach(tab => {
         const tabId = tab.getAttribute('data-tab');
