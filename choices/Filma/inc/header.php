@@ -14,7 +14,7 @@
 		<div class="wrapper">
 		    <ul>
 				<li class="wlogo">
-					<a href="index.php"><img src="assets/play.jpg"><span>Play</span></a>
+					<a href="index.php"><img src="assets/play.jpg"><span>Filma</span></a>
 
 				</li>
 

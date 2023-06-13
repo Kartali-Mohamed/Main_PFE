@@ -164,7 +164,7 @@
         <div class="left">
             <div class="text">
                 <h1 >Videos</h1>
-                <a href="./choices/Play_PFE/index.php"><button class="b1">Voir les videos</button></a>
+                <a href="./choices/Filma/index.php"><button class="b1">Voir les videos</button></a>
             </div>
             <div class="overlay"></div> 
         </div>
