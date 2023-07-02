@@ -66,13 +66,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$thumbn_uploads_dir = './media/thumbnail/'.$name. '.'. $thumbnail_ext;
 
 		//Start uploading
-		// set_error_msg("Loading...");
 		set_error_msg("Loading..");
 		$upload_video = move_uploaded_file($vid_tmp_name, $vid_uploads_dir);
 		$upload_thumbn = move_uploaded_file($thumbn_tmp_name, $thumbn_uploads_dir);
 
+		// Check if video upload in file src
 		if($upload_video && $upload_thumbn) {
 			$video = new Video();
+			// Upload information of video in database
 			$video->setInfo($title, $description, get_session('id'), $vid_uploads_dir, $thumbn_uploads_dir, date("M d, Y",time()));
 			$video->add();
 			$video_id = $video->getVideoId();
@@ -85,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	if(is_file($vid_uploads_dir) && is_file($thumbn_uploads_dir) ){
 		// Check if video upload in database success
 		if(isset($video_id)){
-			//if the uploaded do exist then
+			// if the uploaded do exist then
             // Get and save embedding of title and description 
 			$url = 'http://127.0.0.1:8000/embedding/text?id='.$video_id['id'].'&title='.urlencode($title).'&desc='.urlencode($description);
 			$r = curl_init($url);
@@ -97,7 +98,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			header('refresh:1;url=upload.php?status=uploaded');
 			//header('Location: upload.php?status=uploaded');
 		} else {
-			//Delete Video & Thumbnail src
+			//Delete Video & Thumbnail from file src
 			$video = new Video();
 			$video->deleteThumbnail_video($vid_uploads_dir, $thumbn_uploads_dir);
 			unset_session("error");

@@ -7,18 +7,22 @@ if(!isset($_GET['s']) || empty($_GET['s']) ){
 	die();
 }
 
+// Get text of search
 $search = trim(filter_input(INPUT_GET,"s",FILTER_DEFAULT));
 
 try{
+	// Send text of search to Modele SGPT
 	$url = 'http://127.0.0.1:8000/search?text='.urlencode($search);
+	// Get Response from API
 	$r = curl_init($url);
 	curl_setopt($r, CURLOPT_RETURNTRANSFER, true);
 	$response = curl_exec($r);
 	curl_close($r);
-
+	// Decode Response and get List of ids
 	$arr = json_decode($response);
 	$search_list = implode(",", $arr);
 
+	// Get videos from list of ids
     // ================ MySql ================
 	// $q = $db->prepare('SELECT videos.id as vid,title,description,id_owner,thumbnail_loca,date,users.id,username,fullname FROM videos JOIN users WHERE videos.id_owner=users.id AND videos.id IN ('.$search_list.') ORDER BY FIND_IN_SET(videos.id, "'.$search_list.'")');
     // ================ PostgreSQL ================

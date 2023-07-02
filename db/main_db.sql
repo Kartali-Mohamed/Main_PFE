@@ -40,8 +40,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
+-- Admin compte of Filma
 INSERT INTO `users` (`id`, `username`, `fullname`, `email`, `password`, `is_verified`) VALUES
-(0, 'bounedjar', 'faical', 'faicalbounedjar00@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 1);
+(0, 'admin', 'admin Filma', 'admin@example.com', '3e2959dcb5ae9022f356b64db796bd76', 1);
 
 --
 -- Indexes for dumped tables
