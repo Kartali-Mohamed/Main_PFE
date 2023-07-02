@@ -1,0 +1,2 @@
+PHP == 8 
+psql (PostgreSQL) == 15.2
